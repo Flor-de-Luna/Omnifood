@@ -1,0 +1,776 @@
+/* ------------------------- */
+/* BASIC SETUP */
+/* ------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+html,
+body {
+    background-color: #fff;
+    color: #555;
+    /* ----- available fonts ----- */
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 300;
+/* ----- font-size now measured in percentage off the base 20px so its all relative to each other  ----- */
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+}
+
+/* ----- we want all layout properties to be fluid and therefore are defined in percentages and not pixels ----- */
+
+/* ----- clears floats, in html clearfix is placed in ul because the child elements li have a float property, since its place in ul it is cleared when you are done with ul ----- */
+.clearfix {zoom: 1}
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/* ------------------------- */
+/* REUSABLE COMPONENTS */
+/* ------------------------- */
+
+/* ----- a row will always be centered ----- */
+.row {
+    max-width: 1140px;
+/* ----- margin is described as top right bottom left or top/bottom right/left ----- */
+    margin: 0 auto;
+}
+
+section {
+/* ----- used padding because later I will have some sections with background colors and to preserve the background I need the space to be inside the box ----- */
+    padding: 80px 0;
+}
+
+.box {
+   padding: 1%; 
+}
+
+/* ----- HEADINGS ----- */
+
+ h1,
+ h2,
+ h3 {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;   
+}
+
+h1 {
+/* ----- margin-top takes away white space at the top of the page ----- */
+/* ----- normalize file defines some margin for this element and therefore we have to overwrite it even though we defined it in the basic setup * ----- */
+    margin-top: 0;
+    margin-bottom: 20px; 
+    color: #fff;
+    font-size: 240%;
+    word-spacing: 4px;
+}
+
+h2 {
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;   
+}
+
+h3 {
+   font-size: 110%;
+   margin-bottom: 15px; 
+
+}
+
+/* ----- the small orange line below the text for h2 ----- */
+h2:after {
+    display: block;
+    height: 2px;
+    background-color: #e67e22;
+/* ----- I only want a line, not words, so the content stays empty ----- */
+    content: " ";
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+
+/* ----- PARAGRAPHS ----- */
+
+.long-copy {
+    line-height: 145%;
+    width: 70%;
+    margin-left: 15%; 
+}
+
+.box p {
+    font-size: 90%;
+    line-height: 145%;
+}
+
+/* ----- ICONS ----- */
+
+/* ----- I used ionicons for the icons ----- */
+
+.icon-big {
+    font-size: 350%;
+/* ----- displayed as block to force a line break between icon and text ----- */
+    display: block;
+    color: #e67e22;
+    margin-bottom: 10px;
+}
+
+.icon-small {
+/* ----- I used inline-block so I can define a width to then center it ----- */
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    color: #e67e22;
+    font-size: 120%;
+    margin-right: 10px; 
+    
+/*secrets to align text and icons*/ 
+    line-height: 120%;
+    vertical-align: middle;
+    margin-top: -5px;
+}
+
+/* ----- LINKS ----- */
+
+a:link,
+a:visited {
+    color: #e67e22;
+    text-decoration: none;
+    padding: 1px;
+    border-bottom: 1px solid #e67e22;
+    -webkit-transition: border-bottom 0.3s, color 0.3s;
+    transition: border-bottom 0.3s, color 0.3s;
+}
+
+a:hover,
+a:active {
+    color: #555;
+    border-bottom: 1px solid transparent;
+}
+
+/* ----- BUTTONS ----- */
+
+/* ----- buttons or links in general in CSS can have different states: link, visited, active, and hover ----- */
+/* ----- link is how the element looks in the normal state ----- */
+/* ----- visited is what the element will look like after it's been visited ----- */
+/* ----- hover is when them mouse is over the element ----- */
+/* ----- active is when we click on the element ----- */
+
+.btn:link,
+.btn:visited,
+input[type=submit] {
+/* ----- I changed the inline element <a></a> to inline-block so I don't force a line break, but I can attibute it some padding and margin unlike a normal inline element ----- */
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: 300;
+/* ----- to get rid of the underlined text I put none in text-decoration ----- */
+    text-decoration: none;
+    border-radius: 200px;
+/* ----- the time which it takes the properties for the buttons to change ----- */
+    -webkit-transition: background-color 0.3s, border 0.3s, color 0.3s;
+    transition: background-color 0.3s, border 0.3s, color 0.3s;
+
+}
+
+.btn-full:link,
+.btn-full:visited,
+input[type=submit] {
+    background-color: #e67e22;
+    border: 1xp solid #e67e22;
+    color: #fff;
+    margin-right: 15px;
+}
+
+.btn-ghost:link,
+.btn-ghost:visited {
+/* ----- left background clear by not adding a background color and only adding a border ----- */
+    border: 1px solid #e67e22;
+    color: #e67e22;
+}
+
+/* ----- when hover and active the orange gets darker and .btn-ghost text goes white ----- */
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active {
+    background-color: #cf6d17;
+}
+
+.btn-full:hover,
+.btn-full:active {
+    border: 1xp solid #cf6d17;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+    border: 1px solid #cf6d17;
+    color: #fff;
+}
+
+/* ------------------------- */
+/* HEADER */
+/* ------------------------- */
+
+header {
+/* ----- the zeros are black and the .70 is the transperancy percentage, I didn't want a gradient so I used the same color and transperancy for both ----- */
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.70)), to(rgba(0, 0, 0, 0.70))), url(img/hero.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url(img/hero.jpg);
+/* ----- cover allows full image to be shown, not some of it, and background-position centers the image ----- */
+    background-size: cover;
+    background-position: center;
+/* ----- 100vh is used to allow the image to be 100% in the viewport ----- */
+    height: 100vh;
+    background-attachment: fixed;
+}
+
+.hero-text-box {
+/* ----- only way we can vertically and horizontally center is to position it absolute ----- */
+    position: absolute;
+    width: 1140px;
+    top: 50%;
+    left: 50%;
+/* ----- half of its width and of its height, up and to the left ----- */
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+}
+
+.logo-black {
+    display: none;
+    height: 50px;
+    width: auto;
+    float: left;
+    margin: 5px 0;
+}
+
+/* Main navi */
+
+.main-nav {
+    float: right;
+/* ----- list-style: none gets rid of the bulletin points ----- */
+    list-style: none;
+    margin-top: 55px;
+}
+
+.main-nav li {
+/* ----- changed block to inline-block so they are side by side ----- */
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited {
+/* -----  ----- */
+    padding: 8px 0;
+    color: #fff;
+/* ----- got rid of underline ----- */
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+/* ----- created transparent border line on bottom so when it does go to hover/active the transparent line turns a color ----- */
+    border-bottom: 2px solid transparent;
+    -webkit-transition: border-bottom 0.3s;
+    transition: border-bottom 0.3s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+    border-bottom: 2px solid #e67e22;
+    
+}
+
+/* Mobile navigation */
+
+.mobile-nav-icon {
+    float: right;
+    margin-top: 30px;
+    cursor: pointer;
+    display: none;
+}
+
+.mobile-nav-icon i {
+    font-size: 200%;
+    color: #fff;
+}
+
+/* Sticky navigation */
+
+.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.98);
+    -webkit-box-shadow: 0 2px 2px #efefef;
+    box-shadow: 0 2px 2px #efefef;
+    z-index: 9999;
+}
+
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited {
+    padding: 16px 0;
+    color: #555;
+}
+
+.sticky .logo { display: none; }
+.sticky .logo-black { display: block; }
+
+.sticky .main-nav { margin-top: 18px; }
+    
+/* ------------------------- */
+/*  FEATURES */
+/* ------------------------- */
+
+.section-features .long-copy {
+    margin-bottom: 30px;
+}
+
+/* ------------------------- */
+/*  MEALS */
+/* ------------------------- */
+
+.section-meals {
+    padding: 0;
+}
+
+.meals-showcase {
+/* ----- don't want bullet points ----- */
+    list-style: none;
+/* ----- I did not use a row class because the pictures use 100% of the browsers width where as the row class uses a max width of 1140px ----- */
+    width: 100%;
+}
+
+.meals-showcase li {
+    display: block;
+    float: left;
+/* ----- four pictures covering 100% of the width will be 25% individually ----- */
+    width: 25%;
+}
+
+.meal-photo {
+/* ----- width at 100% is saying that it has the exact width of its parent which in this case is .meals-showcase li ----- */
+    width: 100%;
+/* ----- normalize file defines some margin for this element and therefore we have to overwrite it even though we defined it in the basic setup * ----- */
+    margin: 0;
+/* ----- image is overflowing the webpage and we hide it so it stays withing the browser ----- */
+    overflow: hidden;
+    background-color: #000;
+}
+
+.meal-photo img {
+/* ----- opacity at .7 actually makes the image lighter not darker therefore to get a darker image change the background color above in .meal-photo to #000 or black ----- */
+    opacity: 0.7;
+/* ----- width at 100% is saying that it has the exact width of its parent which in this case is .meal-photo ----- */
+    width: 100%;
+    height: auto;
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s; opacity: 0.5s;
+}
+
+.meal-photo img:hover {
+/* ----- when you hover over image the opacity goes back to normal and the image also zooms out ----- */
+   opacity: 1;
+   -webkit-transform: scale(1.03);
+   transform: scale(1.03);
+}
+
+/* ----- when browser shrunk the idea of not scaling to 1 and going to 1.03 didn't work, black line at bottom still showed.. research how to fix that ----- */
+
+/* ------------------------- */
+/* HOW IT WORKS */
+/* ------------------------- */
+
+.section-steps {
+/* ----- very subtle grey to contrast the cities section to visually create a page change ----- */
+    background-color: #f4f4f4
+}
+
+/* ----- the first child is the first column in the row which in this case is the iphone picture ----- */
+.steps-box:first-child {
+    text-align: right;
+    padding-right: 3%;
+    margin-top: 30px;
+}
+
+/* ----- last child is the last column in the row which in this case is the steps 1,2,3 and app store pictures ----- */
+.steps-box:last-child {
+    padding-left: 3%;
+    margin-top: 70px;
+}
+
+.app-screen {
+    width: 40%;
+}
+
+.works-step {
+    margin-bottom: 50px;
+}
+
+/* ----- this points out just the last step in .works-step which is step 3 and it's text.. this allows me to change the bottom margin of this step alone ----- */
+.works-step:last-of-type {
+    margin-bottom: 80px;
+}
+
+.works-step div {
+    color: #e67e22;
+    border: 2px solid #e67e22;
+/* ----- displayed as inline-block so I don't force a line break and so the numbers can be side by side with the text ----- */
+    display: inline-block;
+/* ----- 50% is chosen because we want a circle ----- */
+    border-radius: 50%;
+/* ----- height and width the same because it's a circle ----- */
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    padding: 5px;
+    float: left;
+    font-size: 150%;
+    margin-right: 25px;
+}
+
+/* ----- added border 0 to cancel out the LINKS section actions for the app store buttons ----- */
+.btn-app:link,
+.btn-app:visited {
+    border: 0;
+}
+
+.btn-app img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+}
+
+/* ------------------------- */
+/* CITIES */
+/* ------------------------- */
+
+.box img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    
+}
+
+.city-feature {
+    margin-bottom: 5px;
+}
+
+/* ------------------------- */
+/* TESTIMONIALS */
+/* ------------------------- */
+
+.section-testimonials {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.80)), to(rgba(0, 0, 0, 0.80))), url(img/back-customers.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.80), rgba(0, 0, 0, 0.80)), url(img/back-customers.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    color: #fff;  
+}
+
+blockquote {
+    padding: 2%;
+    font-style: italic;
+    line-height: 145%;
+    position: relative;
+    margin-top: 40px;
+}
+
+blockquote:before {
+    content: "\201c";
+    font-size: 500%;
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+}
+
+cite {
+    display: block;
+    font-size: 90%;
+    margin-top: 25px;
+}
+
+cite img {
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* ------------------------- */
+/* SIGN UP */
+/* ------------------------- */
+
+.section-plans {
+    background-color: #f4f4f4;
+}
+
+.plan-box {
+    border-radius: 5px;
+    background-color: #fff;
+    width: 90%;
+    margin-left: 5%;
+    -webkit-box-shadow: 0 2px 2px #efefef;
+    box-shadow: 0 2px 2px #efefef;
+}
+
+.plan-box div {
+    padding: 15px;
+    border-bottom: 1px solid #e8e8e8;
+} 
+
+.plan-box div:first-child {
+    background-color: #fcfcfc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.plan-box div:last-child {
+    text-align: center;
+    border: 0;
+}
+
+.plan-price {
+    font-size: 300%;
+    margin-bottom: 10px;
+    color: #e67e22;
+    font-weight: 100
+}
+
+.plan-price span {
+    font-size: 30%;
+    font-weight: 300;
+}
+
+.plan-price-meal {
+    font-size: 80%
+}
+
+.plan-box ul {
+    list-style:  none;
+}
+
+.plan-box ul li {
+    padding: 5px 0;
+}
+
+/* ------------------------- */
+/* FORM */
+/* ------------------------- */
+
+.contact-form {
+    width: 60%;
+    margin: 0 auto;
+}
+
+input[type=text],
+input[type=email],
+select,
+textarea {
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    height: 100px;
+}
+
+input[type=checkbox] {
+    margin: 10px 5px 10px 0;
+}
+
+/*----- took away blue border that automatically pops up around boxes*/
+*:focus {outline: none;}
+
+/* ------------------------- */
+/* FOOTER */
+/* ------------------------- */
+
+footer {
+    background-color: #333;
+    padding: 50px;
+    font-size: 80%;
+}
+
+.footer-nav {
+    list-style: none;
+    float: left;
+}
+
+.social-links {
+    list-style: none;
+    float: right;
+    font-size: 160%
+}
+
+.footer-nav li,
+.social-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer-nav li:last-child,
+.social-links li:last-child {
+    margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited {
+    color: #888;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+    text-decoration: none;
+    border: 0;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+    color: #ddd;
+}
+
+.ion-social-facebook,
+.ion-social-twitter,
+.ion-social-googleplus,
+.ion-social-instagram {
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+.ion-social-facebook:hover {
+    color: #3b5998;
+}
+
+.ion-social-twitter:hover {
+    color: #1da1f2;
+}
+
+.ion-social-googleplus:hover {
+    color: #DB4437;
+}
+
+.ion-social-instagram:hover {
+    color: #c32aa3;
+}
+
+.footer-copyright {
+    margin-top: 20px;
+    text-align: center;
+    color: #888;
+}
+
+/* ------------------------- */
+/* ANIMATIONS */
+/* ------------------------- */
+
+.js--wp-1,
+.js--wp-2, 
+.js--wp-3 { 
+    opacity: 0;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.js--wp-4 {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.js--wp-1.animated,
+.js--wp-2.animated,
+.js--wp-3.animated {
+    opacity: 1;
+}
+
+/*
+Beautiful Typography
+
+1. Use a font-size between 15 and 25 pixels for body text
+2. Use (really) big font sizes for headlines
+3. Use a line spacing between 120 and 150% of the font size
+4. 45 to 90 characters per line
+5. Use good fonts
+6. Chose a font which reflects the look and feel you want for your website
+7. Use only one font
+
+Using Colors Like a Pro
+
+1. Use only one base color
+2. Use a tool if you want to use more colors
+3. Use color to draw attention
+4. Never use black in your design
+5. Choose colors wisely
+
+Working with Images
+
+1. Put text directly on the image
+2. Overlay the image
+3. Put your text in a box
+4. Blur the image
+5. The floor fade
+
+Working with icons
+
+1. Use icons to list features/steps
+2. Use icons for actions and links
+3. Icons should be recognizable
+4. Label your icons
+5. Icons should not take a center stage
+6. Use icon fonts whenever possible
+
+Spacing and layout
+
+1. Put whitespace between your elements
+2. Put whitespace between your groups of elements
+3. Put whitespace between you website's sections
+4. Define where you want your audience to look first
+5. Establish a flow that corresponds to your content's message
+6. Use whitespace to build that flow*/
+
+
+
+/* CSS BROWSER PREFIXES 
+
+andriod
+chrome
+iOS
+safari : -webkit-
+firefox: -moz-
+internet explorer: -ms-
+opera: -o- 
+
+*/
+
+/* CSS BROWSER PREFIXES BORDER RADIUS EXAMPLE
+
+-webkit-border-radius: 25px;
+-moz-border-radius: 25px;
+-ms-border-radius: 25px;
+-o-border-radius: 25px;
+border-radius: 25px;
+
+*/
