@@ -3,9 +3,10 @@
     .hero-text-box {
         width: 100%;
         padding: 0 2%;
-}
+    }
     
-    .row { padding: 0 2% }
+    .row { padding: 0 2%; }
+}
 
 /* Ipad in portrait mode: from 768 to 1023px */
 @media only screen and (max-width: 1023px) {
@@ -42,14 +43,16 @@
     .contact-form { width: 80%; }
     
     .meal-photo img {
-    -webkit-transform: scale(1.30);
-    transform: scale(1.30);
+       -webkit-transform: scale(1.30);
+       transform: scale(1.30);
+    }
+
+    .meal-photo img:hover {
+       -webkit-transform: scale(1.20);
+       transform: scale(1.20);
+    }
 }
 
-.meal-photo img:hover {
-   -webkit-transform: scale(1.20);
-   transform: scale(1.20);
-}
     
     
 /* Large phones to small tablets: from 481 to 767px */
@@ -133,21 +136,19 @@
         text-align: center;
         font-size: 120%;
     }
-    
+}    
     
 
 
     
 /* navigation icon smaller, footer fixed, sticky scroll fix*/
     
-}
+
     
     
 
 /* Small phones: from 0 to 480px */
 @media only screen and (max-width: 480px) {
     section { padding: 25px 0; }
-    .contact-form { width: 100% }
+    .contact-form { width: 100%; }
 }
-
-
