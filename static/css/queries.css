@@ -107,7 +107,7 @@
         margin-left: 0%;
     }
     
-    .app-screen { width: 40%; }
+    .app-screen { width: 30%; }
     .steps-box:first-child { text-align: center; }
     
     .works-step div {
@@ -122,9 +122,9 @@
     .works-step:last-of-type { margin-bottom: 30px; } 
     
     .box img {
-        width: 70%;
-        margin-left: 15%;
-        margin-bottom: 15px
+        width: 60%;
+        margin-left: 20%;
+        margin-bottom: 15px;
     }
     
     .city-feature {

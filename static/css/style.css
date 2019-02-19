@@ -224,8 +224,8 @@ input[type=submit]:active {
 
 header {
 /* ----- the zeros are black and the .70 is the transperancy percentage, I didn't want a gradient so I used the same color and transperancy for both ----- */
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.70)), to(rgba(0, 0, 0, 0.70))), url(../img/hero.jpg);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url(../img/hero.jpg);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.70)), to(rgba(0, 0, 0, 0.70))), url(../img/hero-min.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url(../img/hero-min.jpg);
 /* ----- cover allows full image to be shown, not some of it, and background-position centers the image ----- */
     background-size: cover;
     background-position: center;
@@ -436,7 +436,6 @@ header {
     color: #e67e22;
     border: 2px solid #e67e22;
 /* ----- displayed as inline-block so I don't force a line break and so the numbers can be side by side with the text ----- */
-    display: inline-block;
 /* ----- 50% is chosen because we want a circle ----- */
     border-radius: 50%;
 /* ----- height and width the same because it's a circle ----- */
@@ -481,8 +480,8 @@ header {
 /* ------------------------- */
 
 .section-testimonials {
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.80)), to(rgba(0, 0, 0, 0.80))), url(../img/back-customers.jpg);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.80), rgba(0, 0, 0, 0.80)), url(../img/back-customers.jpg);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.80)), to(rgba(0, 0, 0, 0.80))), url(../img/back-customers-min.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.80), rgba(0, 0, 0, 0.80)), url(../img/back-customers-min.jpg);
     background-size: cover;
     background-attachment: fixed;
     color: #fff;  
